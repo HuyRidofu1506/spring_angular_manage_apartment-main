@@ -1,0 +1,54 @@
+<div class="col-md-8">
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" placeholder="Search by name" [(ngModel)]="name" />
+    <div style="margin-left: 20px;" class="input-group-append">
+      <button class="btn btn-primary" type="button" (click)="searchTitle()">
+        Search
+      </button>
+    </div>
+  </div>
+</div>
+
+<button routerLink="/manage-resident-add" type="button" class="btn btn-primary">Add</button>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Gender</th>
+      <th scope="col">Date of birth</th>
+      <th scope="col">CCCD</th>
+      <th scope="col">Phone Number</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (resident of residents | paginate : {
+    itemsPerPage: pageSize,
+    currentPage: page,
+    totalItems: count
+    }; track resident.id) {
+
+    <tr>
+      <th scope="row">{{ resident.id }}</th>
+      <td>{{ resident.name }}</td>
+      <td>{{ resident.gender }}</td>
+      <td>{{ resident.dob }}</td>
+      <td>{{ resident.cccd }}</td>
+      <td>{{ resident.phoneNumber }}</td>
+      <td>
+        <button routerLink="/manage-resident-edit/{{ resident.id }}" type="button" class="btn btn-warning">Edit</button>
+        <button type="button" class="btn btn-danger" style="margin-left: 15px;"
+          (click)="deleteResident(resident.id)">Delete</button>
+      </td>
+    </tr>
+    }
+
+  </tbody>
+</table>
+
+<div style="text-align: end;" class="col-md-5">
+  <pagination-controls previousLabel="Prev" nextLabel="Next" [responsive]="true"
+    (pageChange)="handlePageChange($event)"></pagination-controls>
+</div>
