@@ -1,0 +1,29 @@
+<div>
+    <div class="submit-form">
+        <div>
+            <div class="form-group">
+                <label for="numberOfApartment">Number of apartment</label>
+                <input type="text" class="form-control" id="numberOfApartment" required
+                    [(ngModel)]="currentApartment.numberOfApartment" name="numberOfApartment" />
+            </div>
+
+            <div class="form-group">
+                <label for="status">Status</label>
+                <select name="status" class="form-control" id="status" [(ngModel)]="currentApartment.status">
+                    <option value="available">available</option>
+                    <option value="inAvailable">inAvailable</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="residentName">Resident name</label>
+                <select name="residentName" class="form-control" id="residentName"
+                    [(ngModel)]="currentApartment.residentName">
+                    <option *ngFor="let resident of residents" value="{{resident.name}}">{{resident.name}}</option>
+                </select>
+            </div>
+
+            <button (click)="update()" class="btn btn-success">Submit</button>
+        </div>
+    </div>
+</div>

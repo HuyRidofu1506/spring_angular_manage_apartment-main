@@ -1,0 +1,54 @@
+<div>
+    <div class="submit-form">
+        <div>
+            <div class="form-group">
+                <label for="numberOfApartment">Number of apartment</label>
+                <select disabled name="numberOfApartment" class="form-control" id="numberOfApartment"
+                    [(ngModel)]="currentData.numberOfApartment">
+                    <option *ngFor="let apartment of apartments" value="{{apartment.numberOfApartment}}">
+                        {{apartment.numberOfApartment}}</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="residentName">Resident name</label>
+                <select disabled name="residentName" class="form-control" id="residentName"
+                    [(ngModel)]="currentData.residentName">
+                    <option *ngFor="let resident of residents" value="{{resident.name}}">{{resident.name}}</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="date">Date</label>
+                <input disabled type="text" class="form-control" id="dob" required [(ngModel)]="currentData.date"
+                    name="date" />
+            </div>
+
+            <div class="form-group">
+                <label for="numberElectric">Number electric</label>
+                <input disabled type="text" class="form-control" id="numberElectric" placeholder="x3500/Volt" required
+                    [(ngModel)]="currentData.numberElectric" name="numberElectric" />
+            </div>
+
+            <div class="form-group">
+                <label for="name">Number water</label>
+                <input disabled type="text" class="form-control" id="numberWater" placeholder="x6000/Lít" required
+                    [(ngModel)]="currentData.numberWater" name="numberWater" />
+            </div>
+
+            <div class="form-group">
+                <label for="toiletMoney">Toilet money</label>
+                <input disabled type="text" class="form-control" id="toiletMoney" required
+                    [(ngModel)]="currentData.toiletMoney" name="toiletMoney" />
+            </div>
+
+            <div class="form-group">
+                <label for="name">Status</label>
+                <select disabled name="status" class="form-control" id="status" [(ngModel)]="currentData.status">
+                    <option value="Pay">Pay</option>
+                    <option value="NotPaid">Not Paid</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
