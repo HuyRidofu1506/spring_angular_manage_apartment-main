@@ -1,0 +1,109 @@
+<div>
+  <div class="submit-form">
+    <form #employeeForm="ngForm" (ngSubmit)="onSubmit(employeeForm)">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          required
+          minlength="2"
+          maxlength="50"
+          [(ngModel)]="currentResident.name"
+          name="name"
+          #name="ngModel"
+        />
+        <div *ngIf="isSubmitted && name.invalid" class="text-danger">
+          <div *ngIf="name.errors?.['required']">Name is required.</div>
+          <div *ngIf="name.errors?.['minlength']">Name must be at least 2 characters long.</div>
+          <div *ngIf="name.errors?.['maxlength']">Name cannot exceed 50 characters.</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="gender">Gender</label>
+        <select name="gender" class="form-control" id="gender" required [(ngModel)]="currentResident.gender" #gender="ngModel">
+          <option value="" disabled>Select Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+        <div *ngIf="isSubmitted && gender.invalid" class="text-danger">Gender is required.</div>
+      </div>
+
+      <div class="form-group">
+        <label for="dob">Date of Birth</label>
+        <input type="date" class="form-control" id="dob" required [(ngModel)]="currentResident.dob" name="dob" #dob="ngModel" />
+        <div *ngIf="isSubmitted && dob.invalid" class="text-danger">Date of Birth is required.</div>
+      </div>
+
+      <div class="form-group">
+        <label for="cccd">CCCD</label>
+        <input
+          type="text"
+          class="form-control"
+          id="cccd"
+          required
+          minlength="9"
+          maxlength="12"
+          [(ngModel)]="currentResident.cccd"
+          name="cccd"
+          #cccd="ngModel"
+        />
+        <div *ngIf="isSubmitted && cccd.invalid" class="text-danger">
+          <div *ngIf="cccd.errors?.['required']">CCCD is required.</div>
+          <div *ngIf="cccd.errors?.['minlength']">CCCD must be at least 9 characters long.</div>
+          <div *ngIf="cccd.errors?.['maxlength']">CCCD cannot exceed 12 characters.</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="phoneNumber">Phone Number</label>
+        <input
+          type="text"
+          class="form-control"
+          id="phoneNumber"
+          required
+          pattern="^[0-9]{10}$"
+          [(ngModel)]="currentResident.phoneNumber"
+          name="phoneNumber"
+          #phoneNumber="ngModel"
+        />
+        <div *ngIf="isSubmitted && phoneNumber.invalid" class="text-danger">
+          <div *ngIf="phoneNumber.errors?.['required']">Phone Number is required.</div>
+          <div *ngIf="phoneNumber.errors?.['pattern']">Phone Number must be a valid 10-digit number.</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="position">Position</label>
+        <select name="position" class="form-control" id="position" required [(ngModel)]="currentResident.position" #position="ngModel">
+          <option value="" disabled>Select Position</option>
+          <option value="guard">Guard</option>
+          <option value="cleaner">Cleaner</option>
+        </select>
+        <div *ngIf="isSubmitted && position.invalid" class="text-danger">Position is required.</div>
+      </div>
+
+      <div class="form-group">
+        <label for="workingTime">Working Time</label>
+        <input
+          type="text"
+          class="form-control"
+          id="workingTime"
+          required
+          minlength="5"
+          [(ngModel)]="currentResident.workingTime"
+          name="workingTime"
+          #workingTime="ngModel"
+        />
+        <div *ngIf="isSubmitted && workingTime.invalid" class="text-danger">
+          <div *ngIf="workingTime.errors?.['required']">Working Time is required.</div>
+          <div *ngIf="workingTime.errors?.['minlength']">Working Time must be at least 5 characters long.</div>
+        </div>
+      </div>
+
+      <button class="btn btn-success">Update</button>
+    </form>
+  </div>
+</div>

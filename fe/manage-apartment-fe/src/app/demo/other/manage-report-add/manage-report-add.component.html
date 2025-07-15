@@ -1,0 +1,52 @@
+<div>
+  <div class="submit-form">
+    <form #reportForm="ngForm" (ngSubmit)="onSubmit(reportForm)">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          required
+          minlength="2"
+          maxlength="50"
+          [(ngModel)]="data.name"
+          name="name"
+          #name="ngModel"
+        />
+        <div *ngIf="isSubmitted && name.invalid" class="text-danger">
+          <div *ngIf="name.errors?.['required']">Name is required.</div>
+          <div *ngIf="name.errors?.['minlength']">Name must be at least 2 characters long.</div>
+          <div *ngIf="name.errors?.['maxlength']">Name cannot exceed 50 characters.</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="date">Date</label>
+        <input type="date" class="form-control" id="date" required [(ngModel)]="data.date" name="date" #date="ngModel" />
+        <div *ngIf="isSubmitted && date.invalid" class="text-danger">Date is required.</div>
+      </div>
+
+      <div class="form-group">
+        <label for="content">Content</label>
+        <textarea
+          class="form-control"
+          id="content"
+          required
+          minlength="10"
+          maxlength="500"
+          [(ngModel)]="data.content"
+          name="content"
+          #content="ngModel"
+        ></textarea>
+        <div *ngIf="isSubmitted && content.invalid" class="text-danger">
+          <div *ngIf="content.errors?.['required']">Content is required.</div>
+          <div *ngIf="content.errors?.['minlength']">Content must be at least 10 characters long.</div>
+          <div *ngIf="content.errors?.['maxlength']">Content cannot exceed 500 characters.</div>
+        </div>
+      </div>
+
+      <button class="btn btn-success">Submit</button>
+    </form>
+  </div>
+</div>

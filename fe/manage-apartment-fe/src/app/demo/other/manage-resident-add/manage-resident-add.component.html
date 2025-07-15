@@ -1,0 +1,81 @@
+<div>
+  <div class="submit-form">
+    <form #residentForm="ngForm" (ngSubmit)="onSubmit(residentForm)">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          required
+          minlength="2"
+          maxlength="50"
+          [(ngModel)]="resident.name"
+          name="name"
+          #name="ngModel"
+        />
+        <div *ngIf="isSubmitted && name.invalid" class="text-danger">
+          <div *ngIf="name.errors?.['required']">Name is required.</div>
+          <div *ngIf="name.errors?.['minlength']">Name must be at least 2 characters long.</div>
+          <div *ngIf="name.errors?.['maxlength']">Name cannot exceed 50 characters.</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="gender">Gender</label>
+        <select name="gender" class="form-control" id="gender" required [(ngModel)]="resident.gender" #gender="ngModel">
+          <option value="" disabled>Select Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+        <div *ngIf="isSubmitted && gender.invalid" class="text-danger">Gender is required.</div>
+      </div>
+
+      <div class="form-group">
+        <label for="dob">Date of Birth</label>
+        <input type="date" class="form-control" id="dob" required [(ngModel)]="resident.dob" name="dob" #dob="ngModel" />
+        <div *ngIf="isSubmitted && dob.invalid" class="text-danger">Date of Birth is required.</div>
+      </div>
+
+      <div class="form-group">
+        <label for="cccd">CCCD</label>
+        <input
+          type="text"
+          class="form-control"
+          id="cccd"
+          required
+          minlength="9"
+          maxlength="12"
+          [(ngModel)]="resident.cccd"
+          name="cccd"
+          #cccd="ngModel"
+        />
+        <div *ngIf="isSubmitted && cccd.invalid" class="text-danger">
+          <div *ngIf="cccd.errors?.['required']">CCCD is required.</div>
+          <div *ngIf="cccd.errors?.['minlength']">CCCD must be at least 9 characters long.</div>
+          <div *ngIf="cccd.errors?.['maxlength']">CCCD cannot exceed 12 characters.</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="phoneNumber">Phone Number</label>
+        <input
+          type="text"
+          class="form-control"
+          id="phoneNumber"
+          required
+          pattern="^[0-9]{10}$"
+          [(ngModel)]="resident.phoneNumber"
+          name="phoneNumber"
+          #phoneNumber="ngModel"
+        />
+        <div *ngIf="isSubmitted && phoneNumber.invalid" class="text-danger">
+          <div *ngIf="phoneNumber.errors?.['required']">Phone Number is required.</div>
+          <div *ngIf="phoneNumber.errors?.['pattern']">Phone Number must be a valid 10-digit number.</div>
+        </div>
+      </div>
+
+      <button class="btn btn-success">Submit</button>
+    </form>
+  </div>
+</div>

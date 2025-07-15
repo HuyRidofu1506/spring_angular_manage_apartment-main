@@ -1,0 +1,53 @@
+<div>
+  <div class="submit-form">
+    <form #apartmentForm="ngForm" (ngSubmit)="onSubmit(apartmentForm)">
+      <div class="form-group">
+        <label for="numberOfApartment">Number of apartment</label>
+        <input
+          type="text"
+          class="form-control"
+          id="numberOfApartment"
+          required
+          minlength="1"
+          [(ngModel)]="apartment.numberOfApartment"
+          name="numberOfApartment"
+          #numberOfApartment="ngModel"
+        />
+        <div *ngIf="isSubmitted && numberOfApartment.invalid" class="text-danger">
+          <div *ngIf="numberOfApartment.errors?.['required']">Number of apartment is required.</div>
+          <div *ngIf="numberOfApartment.errors?.['minlength']">Number of apartment must be at least 1 character long.</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="status">Status</label>
+        <select name="status" class="form-control" id="status" required [(ngModel)]="apartment.status" #status="ngModel">
+          <option value="" disabled>Select Status</option>
+          <option value="available">Available</option>
+          <option value="inAvailable">InAvailable</option>
+        </select>
+        <div *ngIf="isSubmitted && status.invalid" class="text-danger">Status is required.</div>
+      </div>
+
+      <div class="form-group">
+        <label for="residentName">Resident name</label>
+        <select
+          name="residentName"
+          class="form-control"
+          id="residentName"
+          required
+          [(ngModel)]="apartment.residentName"
+          #residentName="ngModel"
+        >
+          <option value="" disabled>Select Resident</option>
+          <option *ngFor="let resident of residents" [value]="resident.name">
+            {{ resident.name }}
+          </option>
+        </select>
+        <div *ngIf="isSubmitted && residentName.invalid" class="text-danger">Resident name is required.</div>
+      </div>
+
+      <button class="btn btn-success">Submit</button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,106 @@
+<div>
+  <div class="submit-form">
+    <form #billForm="ngForm" (ngSubmit)="onSubmit(billForm)">
+      <div class="form-group">
+        <label for="numberOfApartment">Number of apartment</label>
+        <select
+          name="numberOfApartment"
+          class="form-control"
+          id="numberOfApartment"
+          required
+          [(ngModel)]="data.numberOfApartment"
+          #numberOfApartment="ngModel"
+        >
+          <option value="" disabled>Select Apartment</option>
+          <option *ngFor="let apartment of apartments" [value]="apartment.numberOfApartment">
+            {{ apartment.numberOfApartment }}
+          </option>
+        </select>
+        <div *ngIf="isSubmitted && numberOfApartment.invalid" class="text-danger">Apartment number is required.</div>
+      </div>
+
+      <div class="form-group">
+        <label for="residentName">Resident name</label>
+        <select name="residentName" class="form-control" id="residentName" required [(ngModel)]="data.residentName" #residentName="ngModel">
+          <option value="" disabled>Select Resident</option>
+          <option *ngFor="let resident of residents" [value]="resident.name">{{ resident.name }}</option>
+        </select>
+        <div *ngIf="isSubmitted && residentName.invalid" class="text-danger">Resident name is required.</div>
+      </div>
+
+      <div class="form-group">
+        <label for="date">Date</label>
+        <input type="date" class="form-control" id="date" required [(ngModel)]="data.date" name="date" #date="ngModel" />
+        <div *ngIf="isSubmitted && date.invalid" class="text-danger">Date is required.</div>
+      </div>
+
+      <div class="form-group">
+        <label for="numberElectric">Number electric</label>
+        <input
+          type="text"
+          class="form-control"
+          id="numberElectric"
+          placeholder="x3500/Volt"
+          required
+          pattern="^[0-9]+$"
+          [(ngModel)]="data.numberElectric"
+          name="numberElectric"
+          #numberElectric="ngModel"
+        />
+        <div *ngIf="isSubmitted && numberElectric.invalid" class="text-danger">
+          <div *ngIf="numberElectric.errors?.['required']">Number electric is required.</div>
+          <div *ngIf="numberElectric.errors?.['pattern']">Must be a valid number.</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="numberWater">Number water</label>
+        <input
+          type="text"
+          class="form-control"
+          id="numberWater"
+          placeholder="x6000/Liter"
+          required
+          pattern="^[0-9]+$"
+          [(ngModel)]="data.numberWater"
+          name="numberWater"
+          #numberWater="ngModel"
+        />
+        <div *ngIf="isSubmitted && numberWater.invalid" class="text-danger">
+          <div *ngIf="numberWater.errors?.['required']">Number water is required.</div>
+          <div *ngIf="numberWater.errors?.['pattern']">Must be a valid number.</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="toiletMoney">Toilet money</label>
+        <input
+          type="text"
+          class="form-control"
+          id="toiletMoney"
+          required
+          pattern="^[0-9]+$"
+          [(ngModel)]="data.toiletMoney"
+          name="toiletMoney"
+          #toiletMoney="ngModel"
+        />
+        <div *ngIf="isSubmitted && toiletMoney.invalid" class="text-danger">
+          <div *ngIf="toiletMoney.errors?.['required']">Toilet money is required.</div>
+          <div *ngIf="toiletMoney.errors?.['pattern']">Must be a valid number.</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="status">Status</label>
+        <select name="status" class="form-control" id="status" required [(ngModel)]="data.status" #status="ngModel">
+          <option value="" disabled>Select Status</option>
+          <option value="Pay">Pay</option>
+          <option value="NotPaid">Not Paid</option>
+        </select>
+        <div *ngIf="isSubmitted && status.invalid" class="text-danger">Status is required.</div>
+      </div>
+
+      <button class="btn btn-success">Submit</button>
+    </form>
+  </div>
+</div>

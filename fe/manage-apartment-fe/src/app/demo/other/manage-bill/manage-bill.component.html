@@ -1,0 +1,57 @@
+<div class="col-md-8">
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" placeholder="Search by code bill" [(ngModel)]="codeBill" />
+    <div style="margin-left: 20px" class="input-group-append">
+      <button class="btn btn-primary" type="button" (click)="searchTitle()">Search</button>
+    </div>
+  </div>
+</div>
+
+<button routerLink="/manage-bill-add" type="button" class="btn btn-primary">Add</button>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Bill Code</th>
+      <th scope="col">Total</th>
+      <th scope="col">Created At</th>
+      <th scope="col">Updated At</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (
+      bill of bills
+        | paginate
+          : {
+              itemsPerPage: pageSize,
+              currentPage: page,
+              totalItems: count
+            };
+      track bill.id
+    ) {
+      <tr>
+        <th scope="row">{{ bill.id }}</th>
+        <td>{{ bill.codeBill }}</td>
+        <td>{{ bill.total }}</td>
+        <td>{{ bill.createdAt ? formatDate(bill.createdAt) : 'No data' }}</td>
+        <td>{{ bill.updatedAt ? formatDate(bill.updatedAt) : 'No data' }}</td>
+        <td>
+          <button routerLink="/manage-bill-view/{{ bill.id }}" type="button" class="btn btn-warning">Detail</button>
+          <button routerLink="/manage-bill-edit/{{ bill.id }}" type="button" style="margin-left: 15px" class="btn btn-info">Edit</button>
+          <button type="button" class="btn btn-danger" style="margin-left: 15px" (click)="deleteResident(bill.id)">Delete</button>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>
+
+<div style="text-align: end" class="col-md-5">
+  <pagination-controls
+    previousLabel="Prev"
+    nextLabel="Next"
+    [responsive]="true"
+    (pageChange)="handlePageChange($event)"
+  ></pagination-controls>
+</div>

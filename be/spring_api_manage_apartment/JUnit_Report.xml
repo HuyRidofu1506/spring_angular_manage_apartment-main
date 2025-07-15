@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="test" time="13.556" tests="2" failures="0" errors="0">
+   <testsuite name="test" tests="2" failures="0" errors="0" time="13.556" skipped="0" timestamp="23-04-2025T15:27:22" hostname="DELL - Ridofu" id="Test Suites/DevOps/test">
+      <properties>
+         <property name="deviceName" value=""/>
+         <property name="devicePlatform"/>
+         <property name="logFolder" value="C:\\Users\\DELL\\Katalon Studio\\test03\\Reports\\20250423_152715\\DevOps\\test\\20250423_152715"/>
+         <property name="logFiles" value="C:\\Users\\DELL\\Katalon Studio\\test03\\Reports\\20250423_152715\\DevOps\\test\\20250423_152715\\execution0.log"/>
+         <property name="attachments" value=""/>
+         <property name="hostName" value="DELL - Ridofu"/>
+         <property name="os" value="Windows 10 64bit"/>
+         <property name="katalonVersion" value="10.1.1.0"/>
+         <property name="browser" value="Chrome 135.0.7049.96"/>
+         <property name="hostAddress" value="192.168.2.40"/>
+         <property name="sessionId" value="e6d40e148410f0575bf114e25125e553"/>
+         <property name="seleniumVersion" value="4.22.0"/>
+         <property name="proxyInformation" value="ProxyInformation { proxyOption=NO_PROXY, proxyServerType=HTTP, username=, password=********, proxyServerAddress=, proxyServerPort=0, executionList=&quot;&quot;, isApplyToDesiredCapabilities=true }"/>
+         <property name="platform" value="Windows 10"/>
+      </properties>
+      <testcase name="Test Cases/login/new_login" time="6.109" classname="Test Cases/login/new_login" status="PASSED">
+         <properties>
+            <property name="data_binding"><![CDATA[{"password":"123123zzz","expectedMsg":"userHuy1","username":"userHuy1"}]]></property>
+         </properties>
+         <system-out><![CDATA[23-04-2025T15:27:23 - [TEST_CASE][PASSED] - Test Cases/login/new_login: Test Cases/login/new_login
+
+23-04-2025T15:27:23 - [TEST_STEP][PASSED] - openBrowser("http://localhost:4200/login"): Browser is opened with url: 'http://localhost:4200/login'
+
+23-04-2025T15:27:23 - [MESSAGE][INFO] - Starting 'Chrome' driver
+
+23-04-2025T15:27:24 - [MESSAGE][INFO] - Action delay is set to 0 milliseconds
+
+23-04-2025T15:27:26 - [MESSAGE][PASSED] - Browser is opened with url: 'http://localhost:4200/login'
+
+23-04-2025T15:27:26 - [TEST_STEP][PASSED] - setText(findTestObject("login/Page_Mantis Angular Dashboard Template/input_Username"), username): Text 'userHuy1' is set on object 'Object Repository/login/Page_Mantis Angular Dashboard Template/input_Username'
+
+23-04-2025T15:27:27 - [MESSAGE][PASSED] - Text 'userHuy1' is set on object 'Object Repository/login/Page_Mantis Angular Dashboard Template/input_Username'
+
+23-04-2025T15:27:27 - [TEST_STEP][PASSED] - setText(findTestObject("login/Page_Mantis Angular Dashboard Template/input_Password"), password): Text '123123zzz' is set on object 'Object Repository/login/Page_Mantis Angular Dashboard Template/input_Password'
+
+23-04-2025T15:27:28 - [MESSAGE][PASSED] - Text '123123zzz' is set on object 'Object Repository/login/Page_Mantis Angular Dashboard Template/input_Password'
+
+23-04-2025T15:27:28 - [TEST_STEP][PASSED] - click(findTestObject("login/Page_Mantis Angular Dashboard Template/button_Login")): Object: 'Object Repository/login/Page_Mantis Angular Dashboard Template/button_Login' is clicked on
+
+23-04-2025T15:27:28 - [MESSAGE][PASSED] - Object: 'Object Repository/login/Page_Mantis Angular Dashboard Template/button_Login' is clicked on
+
+23-04-2025T15:27:28 - [TEST_STEP][PASSED] - verifyTextPresent(expectedMsg, false): Text 'userHuy1' is present on page 
+
+23-04-2025T15:27:29 - [MESSAGE][PASSED] - Text 'userHuy1' is present on page]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <testcase name="Test Cases/resident/new_resident_add" time="7.031" classname="Test Cases/resident/new_resident_add" status="PASSED">
+         <properties>
+            <property name="data_binding"><![CDATA[{"gender":"male","phone":"1234526789","dob":"11032003","hoten":"Nguyen Phat","cccd":"1478523069"}]]></property>
+         </properties>
+         <system-out><![CDATA[23-04-2025T15:27:29 - [TEST_CASE][PASSED] - Test Cases/resident/new_resident_add: Test Cases/resident/new_resident_add
+
+23-04-2025T15:27:29 - [TEST_STEP][PASSED] - openBrowser("http://localhost:4200/manage-resident"): Browser is opened with url: 'http://localhost:4200/manage-resident'
+
+23-04-2025T15:27:29 - [MESSAGE][WARNING] - A browser is already opened. Closing browser and opening a new one
+
+23-04-2025T15:27:29 - [MESSAGE][INFO] - Starting 'Chrome' driver
+
+23-04-2025T15:27:29 - [MESSAGE][INFO] - Action delay is set to 0 milliseconds
+
+23-04-2025T15:27:32 - [MESSAGE][PASSED] - Browser is opened with url: 'http://localhost:4200/manage-resident'
+
+23-04-2025T15:27:32 - [TEST_STEP][PASSED] - click(findTestObject("resident/manageHome/btnAdd")): Object: 'Object Repository/resident/manageHome/btnAdd' is clicked on
+
+23-04-2025T15:27:32 - [MESSAGE][PASSED] - Object: 'Object Repository/resident/manageHome/btnAdd' is clicked on
+
+23-04-2025T15:27:32 - [TEST_STEP][PASSED] - setText(findTestObject("resident/addResident/txtName"), hoten): Text 'Nguyen Phat' is set on object 'Object Repository/resident/addResident/txtName'
+
+23-04-2025T15:27:33 - [MESSAGE][PASSED] - Text 'Nguyen Phat' is set on object 'Object Repository/resident/addResident/txtName'
+
+23-04-2025T15:27:33 - [TEST_STEP][PASSED] - click(findTestObject("resident/addResident/selectGender")): Object: 'Object Repository/resident/addResident/selectGender' is clicked on
+
+23-04-2025T15:27:33 - [MESSAGE][PASSED] - Object: 'Object Repository/resident/addResident/selectGender' is clicked on
+
+23-04-2025T15:27:33 - [TEST_STEP][PASSED] - selectOptionByValue(findTestObject("resident/addResident/selectGender"), gender, false): All options with value 'male' are selected in object 'Object Repository/resident/addResident/selectGender' 
+
+23-04-2025T15:27:34 - [MESSAGE][PASSED] - All options with value 'male' are selected in object 'Object Repository/resident/addResident/selectGender' 
+
+23-04-2025T15:27:34 - [TEST_STEP][PASSED] - setText(findTestObject("resident/addResident/txtDOB"), dob): Text '11032003' is set on object 'Object Repository/resident/addResident/txtDOB'
+
+23-04-2025T15:27:34 - [MESSAGE][PASSED] - Text '11032003' is set on object 'Object Repository/resident/addResident/txtDOB'
+
+23-04-2025T15:27:34 - [TEST_STEP][PASSED] - setText(findTestObject("resident/addResident/txtCCCD"), cccd): Text '1478523069' is set on object 'Object Repository/resident/addResident/txtCCCD'
+
+23-04-2025T15:27:35 - [MESSAGE][PASSED] - Text '1478523069' is set on object 'Object Repository/resident/addResident/txtCCCD'
+
+23-04-2025T15:27:35 - [TEST_STEP][PASSED] - setText(findTestObject("resident/addResident/txtPhoneNumber"), phone): Text '1234526789' is set on object 'Object Repository/resident/addResident/txtPhoneNumber'
+
+23-04-2025T15:27:36 - [MESSAGE][PASSED] - Text '1234526789' is set on object 'Object Repository/resident/addResident/txtPhoneNumber'
+
+23-04-2025T15:27:36 - [TEST_STEP][PASSED] - click(findTestObject("resident/addResident/btnSubmit")): Object: 'Object Repository/resident/addResident/btnSubmit' is clicked on
+
+23-04-2025T15:27:36 - [MESSAGE][PASSED] - Object: 'Object Repository/resident/addResident/btnSubmit' is clicked on]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <system-out><![CDATA[23-04-2025T15:27:22 - [TEST_SUITE][PASSED] - test: Test Cases/resident/new_resident_add]]></system-out>
+      <system-err><![CDATA[]]></system-err>
+   </testsuite>
+</testsuites>

@@ -1,0 +1,54 @@
+<div class="col-md-8">
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" placeholder="Search by name" [(ngModel)]="residentName" />
+    <div style="margin-left: 20px;" class="input-group-append">
+      <button class="btn btn-primary" type="button" (click)="searchTitle()">
+        Search
+      </button>
+    </div>
+  </div>
+</div>
+
+<button routerLink="/manage-apartment-add" type="button" class="btn btn-primary">Add</button>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Number of apartment</th>
+      <th scope="col">Status</th>
+      <th scope="col">Name of user</th>
+      <th scope="col">Created At</th>
+      <th scope="col">Updated At</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (apartment of apartments | paginate : {
+    itemsPerPage: pageSize,
+    currentPage: page,
+    totalItems: count
+    }; track apartment.id) {
+
+    <tr>
+      <th scope="row">{{ apartment.id }}</th>
+      <td>{{ apartment.numberOfApartment }}</td>
+      <td>{{ apartment.status }}</td>
+      <td>{{ apartment.residentName }}</td>
+      <td>{{ apartment.createdAt ? formatDate(apartment.createdAt) : 'No data' }}</td>
+      <td>{{ apartment.updatedAt ? formatDate(apartment.updatedAt) : 'No data' }}</td>
+      <td>
+        <button routerLink="/manage-apartment-edit/{{ apartment.id }}" type="button"
+          class="btn btn-warning">Edit</button>
+        <button type="button" class="btn btn-danger" style="margin-left: 15px;"
+          (click)="delete(apartment.id)">Delete</button>
+      </td>
+    </tr>
+    }
+  </tbody>
+</table>
+
+<div style="text-align: end;" class="col-md-5">
+  <pagination-controls previousLabel="Prev" nextLabel="Next" [responsive]="true"
+    (pageChange)="handlePageChange($event)"></pagination-controls>
+</div>
